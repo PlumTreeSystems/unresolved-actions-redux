@@ -24,7 +24,7 @@ const dependencies = {
 };
 // In this case dependency resolver is simple service object map, 
 // but can be any function that takes service name and returns the service
-const dependencyResolver = serviceName => dependencies[service];
+const dependencyResolver = serviceName => dependencies[serviceName];
 
 // add unresolved action middleware and pass dependency resolver 
 const configureStore = () => {
@@ -32,7 +32,7 @@ const configureStore = () => {
         unresolvedActionMiddleware(dependencyResolver),       
     );
 
-    return createStore(createReducedActionReducer(reducers), {}, middleware);
+    return createStore(reducers, {}, middleware);
 };
 
 export default configureStore;
