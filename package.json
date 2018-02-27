@@ -1,6 +1,6 @@
 {
   "name": "unresolved-actions-redux",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React redux library for working with async actions",
   "main": "dist/index.js",
   "scripts": {
