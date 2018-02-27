@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src --presets babel-preset-es2015 --presets babel-preset-stage-0 --out-dir dist"
+    "build": "babel src --presets babel-preset-es2015,babel-preset-stage-0 --out-dir dist"
   },
   "peerDependencies": {
     "redux": "3.x"
