@@ -3,35 +3,53 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.unresolvedActionMiddleware = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _regenerator = require("babel-runtime/regenerator");
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _toConsumableArray2 = require("babel-runtime/helpers/toConsumableArray");
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
+var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _keys = require("babel-runtime/core-js/object/keys");
+
+var _keys2 = _interopRequireDefault(_keys);
+
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require("babel-runtime/helpers/createClass");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
 
 exports.Resolver = Resolver;
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var UnresolvedAction = function () {
     function UnresolvedAction(resolver, args) {
         var dependencies = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-        _classCallCheck(this, UnresolvedAction);
+        (0, _classCallCheck3.default)(this, UnresolvedAction);
 
         this.resolver = resolver;
         this.dependencies = dependencies;
         this.args = args;
     }
 
-    _createClass(UnresolvedAction, [{
+    (0, _createClass3.default)(UnresolvedAction, [{
         key: "resolveDependencies",
         value: function resolveDependencies(store, getDependency) {
             var _this = this;
 
             var resolved = {};
-            Object.keys(this.dependencies).forEach(function (dep) {
+            (0, _keys2.default)(this.dependencies).forEach(function (dep) {
                 resolved[dep] = getDependency(_this.dependencies[dep]);
             });
             resolved.getState = store.getState;
@@ -41,14 +59,14 @@ var UnresolvedAction = function () {
     }, {
         key: "execute",
         value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dependencies) {
+            var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(dependencies) {
                 var _resolver;
 
-                return regeneratorRuntime.wrap(function _callee$(_context) {
+                return _regenerator2.default.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                return _context.abrupt("return", (_resolver = this.resolver).call.apply(_resolver, [dependencies].concat(_toConsumableArray(this.args))));
+                                return _context.abrupt("return", (_resolver = this.resolver).call.apply(_resolver, [dependencies].concat((0, _toConsumableArray3.default)(this.args))));
 
                             case 1:
                             case "end":
@@ -65,7 +83,6 @@ var UnresolvedAction = function () {
             return execute;
         }()
     }]);
-
     return UnresolvedAction;
 }();
 
